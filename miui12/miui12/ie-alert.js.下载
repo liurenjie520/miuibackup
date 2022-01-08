@@ -1,0 +1,9 @@
+window.onload = function() {
+  if (window.document.documentMode) {
+    window.document.body.innerHTML =
+      "<h1>涓哄疄鐜拌璧忔晥鏋滐紝寤鸿鎮ㄤ娇鐢–hrome銆�360娴忚鍣ㄣ€丵Q娴忚鍣ㄣ€佺伀鐙愭祻瑙堝櫒銆佺寧璞规祻瑙堝櫒绛夋祻瑙堟湰缃戠珯</h1>";
+    var style = document.createElement("style");
+    style.innerHTML = "h1 {color: red}";
+    window.document.head.appendChild(style);
+  }
+};
