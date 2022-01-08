@@ -1,0 +1,169 @@
+<!DOCTYPE html >
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>MIUI 7.5 稳定版</title>
+		<link rel="stylesheet" href="styles/reset.css" />
+		<link rel="stylesheet" href="styles/index.css?2222" />
+		<script src="js/jquery.1.7.1.min.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+			    window.location.href ="wap.html";
+			} else if (/(Android)/i.test(navigator.userAgent)) {
+			    window.location.href ="wap.html";
+			}
+			var video_src_15 = '<img class="dialog_close" src="http://www.miui.com/static/miui/newindex/images/dialog_close.png"><embed src="http://player.youku.com/player.php/sid/XMTU2NDM3Nzg5Ng==/v.swf" allowFullScreen="true" quality="high" width="720" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>';
+			$(".part_15>p").on("click", function() {
+		        showDialog(video_src_15);
+		    });
+		    function showDialog(video_src) {
+		        $(".z_index_dialog").show();
+		        var content_width = $(".z_index_dialog").width() / 2 - 360;
+		        var content_height = $(".z_index_dialog").height() / 2 - 300;
+		        $(".dialog_content").css("width", "720px");
+		        $(".dialog_content").css("height", "600px");
+		        $(".dialog_content").css("left", content_width);
+		        $(".dialog_content").css("top", content_height);
+		        $(".dialog_content").html(video_src);
+		        $(".dialog_content").show();
+		        $(".dialog_close").bind("click", dialogClose);
+		    }
+
+		    function dialogClose() {
+		        $(".z_index_dialog").hide();
+		        $(".dialog_content").hide();
+		        $(".dialog_content").html("");
+		        $(".dialog_close").unbind("click", dialogClose);
+		    }
+
+		    var bus = '<img class="dialog_close" src="http://www.miui.com/static/miui/newindex/images/dialog_close.png"><embed src="http://player.youku.com/player.php/sid/XMTYyNjE3NzAxMg==/v.swf" allowFullScreen="true" quality="high" width="720" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>';
+		    var railway = '<img class="dialog_close" src="http://www.miui.com/static/miui/newindex/images/dialog_close.png"><embed src="http://player.youku.com/player.php/sid/XMTYyNjE3ODc5Mg==/v.swf" allowFullScreen="true" isAutoPlay="true" quality="high" width="720" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>';
+		    $(".play_btn").click(function(){
+		    	if ($(this).data("type") == "bus") {
+		    		showDialog(bus);
+		    	};
+		    	if ($(this).data("type") == "railway") {
+		    		showDialog(railway);
+		    	};
+		    });
+		    if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/8./i)=="8.") 
+	        { 
+	            var script = document.createElement("script");
+			    script.type = "text/javascript";
+			    script.src = "http://api.bbs.miui.com/app/index/stat?url=IE8Count://www.miui.com/zt/miui7.5/index.html";
+			    document.getElementsByTagName('head')[0].appendChild(script);
+	        }
+		})
+		</script>
+	</head>
+	<body>
+		<div class="main">
+			<div class="header_on">
+		        <div class="header">
+		            <a title="MIUI" href="http://www.miui.com/default.php" class="miui_logo">MIUI</a>
+		            <p class="miui_menu">
+		                <a href="http://www.miui.com/default.php">首页</a>
+		                <a style="font-family: 'microsoft yahei';" href="http://www.miui.com/zt/miui8/index.html">MIUI 8</a>
+		                <a class="current" style="font-family: 'microsoft yahei';" href="http://www.miui.com/zt/miui7.5/index.html">MIUI 7.5</a>
+		                <a href="/download.html">下载</a>
+		                <a href="/unlock/">解锁</a>
+		                <a href="/index.html">论坛</a>
+		            </p>
+		        </div>
+		    </div>
+		    <div class="part_on part_0_on">
+				<div class="part part_0">
+					<a href="http://www.miui.com/zt/miui7.5/download.html">立即体验</a>
+					<p>在MIUI 7.5中，你可以率先体验到一部分MIUI8的强大功能。</p>
+				</div>
+			</div>
+			<div class="part_on part_2_on">
+				<div class="part part_2">
+					<h2>好用从点亮屏幕开始</h2>
+					<h3>50多家专业媒体提供高质量图片资源，每日都有更新，告别一成不变</h3>
+				</div>
+			</div>
+			<div class="part_on part_3_on">
+				<div class="part part_3">
+					<h2>小米公交</h2>
+					<h3>你有过排长队充值的体验么？我们不想再让你经历这种麻烦。<br/>小米公交利用成熟的NFC功能，把手机变成你的城市一卡通，线上开卡充值几分钟搞定。</h3>
+					<p>*目前仅支持小米5机型。已开通上海公共交通卡和深圳通。</p>
+					<ul class="photo_show clearfix">
+						<li class="photo_show_0">线上开卡充值</li>
+						<li class="photo_show_1">无需点亮屏幕</li>
+						<li class="photo_show_2">开机状态下直接刷</li>
+					</ul>
+					<h4>使用实例</h4>
+					<div class="video_container">
+						<div class="bus">
+							<p>手机刷公交</p>
+							<div class="play_btn" data-type="bus"></div>
+						</div>
+						<div class="railway">
+							<p>手机刷地铁</p>
+							<div class="play_btn" data-type="railway"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="part_on part_4_on">
+				<div class="part part_4">
+					<h2>移山填海之作 小米兰亭字体</h2>
+					<h3>在移动阅读越来越普及的今天，手机要好用，字体排版不能将就。MIUI与方正耗时18个月打磨，用米兰字体重新定义中文移动阅读体验。</h3>
+				</div>
+			</div>
+			<div class="part_on part_5_on">
+				<div class="part part_5">
+					<h2>应用锁</h2>
+					<h3>MIUI的应用锁由系统直接集成，应用启动时自动触发，不仅更省电，也避免像第三方应用锁一样会被杀掉而失效，并且支持指纹解锁。 <br/></h3>
+				</div>
+			</div>
+			<div class="part_on part_6_on">
+				<div class="part part_6">
+					<h2>专为小米用户定制的输入法</h2>
+					<h3>为了让你获得更舒适的打字体验，小米与搜狗/百度合作定制输入法，符合MIUI简洁清爽的设计语言，每次输入都贴合你的日常习惯。</h3>
+					<p>＊最新百度输入法小米版可在小米应用商店下载更新。</p>
+				</div>
+			</div>
+			<div class="part_on part_15_on">
+				<div class="part part_15">
+					<h2>悬浮球</h2>
+					<h3>可自定义功能的悬浮球，让高频次操作更有效率。单手操作现在不仅便捷，而且更酷了。</h3>
+					<p>观看演示视频</p>
+				</div>
+			</div>
+			<div class="part_on part_7_on">
+				<div class="part part_7">
+					<h2>通知短信卡片化</h2>
+					<h3>卡片化的设计，让信息的获取更直观。不仅易于阅读，通过对短信内容的读取分析，<br/>我们也能够更有针对性地为你提供服务。</h3>
+				</div>
+			</div>
+			<div class="part_on part_8_on">
+				<div class="part part_8">
+					<h2>米SIM</h2>
+					<h3>这是小米与运营商合作推出的新服务：将SIM卡数据安全写入手机，不需办理实体卡就可直接上网。<br/>快速稳定，月末流量不清零，且低至0.03元/MB。也许，是时候告别实体SIM卡了。</h3>
+					<p>＊目前支持机型：小米4C/小米4S/小米Note双网通/小米Note顶配版/红米Note2/红米Note3双网通</p>
+				</div>
+			</div>
+			<div class="footer_on">
+		        <div class="footer">
+		            <ul class="footer_links">
+		                <li><a href="http://weibo.com/miui" target="_blank">新浪微博</a></li>
+		                <li class="weixin"><a href="javascript:void(0);">官方微信<img width="150" src="https://static.bbs.miui.com/static/index6/images/index_89.png"></a></li>
+		                <li><a href="http://tieba.baidu.com/f?kw=miui" target="_blank">官方贴吧</a></li>
+		                <li><a href="http://www.miui.com/fans.php" target="_blank">全球粉丝站</a></li>
+		                <li class="language_list"><a href="http://www.miui.com" target="_blank">简体中文</a>
+		                    <p class="languages"><a style="font-family: 'microsoft yahei'" href="http://en.miui.com/" target="_blank">English</a><a href="http://tw.miui.com/" target="_blank">繁體台湾</a><a href="http://hk.miui.com/" target="_blank">繁體香港</a><a href="http://www.miui.com" target="_blank">简体中文</a></p>
+		                </li>
+		            </ul>
+		            <p class="copyright">
+		                Copyright &copy; 2016 MIUI 京ICP备10046444号 | 京公网安备11010802020134号 | 京ICP证110507号
+		            </p>
+		        </div>
+		    </div>
+		</div>
+		<div style="display: none;" class="z_index_dialog"></div>
+		<div style=" display: none;" class="dialog_content"></div>
+	</body>
+</html>
