@@ -1,0 +1,165 @@
+$(function(){
+	$(".photo_show").delegate('li', 'mouseover', videoPlay);
+    $(".part_21_videos").delegate('div', 'mouseover', function(){
+        $(this).children('video').get(0).play();
+        $(this).children('video').show();
+        $(this).siblings().find("video").eq(0).hide().get(0).load();
+    });
+
+    $("#part_3_video_1").get(0).onended = function(){
+        $(".photo_show").delegate('li', 'mouseover', videoPlay);
+    }
+    $("#part_3_video_2").get(0).onended = function(){
+        $(".photo_show").delegate('li', 'mouseover', videoPlay);
+    }
+    $("#part_3_video_3").get(0).muted = true;
+    $("#part_3_video_3").get(0).onended = function(){
+        $(".photo_show").delegate('li', 'mouseover', videoPlay);
+    }
+
+    function videoPlay(){
+        $(this).children('video').get(0).play();
+        $(this).children('video').show();
+        $(this).undelegate("li", "mouseover");
+    }
+
+	var part_4_tabs = $(".part_4_tabs").eq(0);
+	$(".part_4_tabs .tags p").click(function(){
+        var index = $(".part_4_tabs .tags p").index($(this));
+        part_4_tabs.data("index",index);
+        makeAnimate4();
+    });
+    $(".part_4_img").click(function(){
+        var index = $(".part_4_img").index($(this));
+        part_4_tabs.data("index",index);
+        makeAnimate4();
+    })
+    var positions_4 = ["460","72px","-318px","-710px","-1100px","-1490px"];
+    function makeAnimate4(){
+        var index = part_4_tabs.data("index");
+        var tags = $(".part_4_tabs .tags>p");
+        tags.removeClass('part_4_current_p').eq(index).addClass("part_4_current_p");
+        $(".part_4_tabs .img_descriptions>p").hide().eq(index).show();
+        $(".part_4_img").children('div').addClass("img_cover").eq(index).removeClass("img_cover");
+        $(".part_4_imgs_apples").css("zIndex","4").animate({"left":positions_4[index]},500,function(){$(".part_4_imgs_apples").css("zIndex","2");$(".part_4_imgs_apple>div").addClass("img_cover");$(".part_4_imgs_apple>div").eq(index).removeClass('img_cover')});
+    }
+
+    var part_14_tabs = $(".part_14_tabs").eq(0);
+	$(".part_14_tabs .tags p").click(function(){
+        var index = $(".part_14_tabs .tags p").index($(this));
+        part_14_tabs.data("index",index);
+        makeAnimate14();
+    });
+    $(".part_14_img").click(function(){
+        var index = $(".part_14_img").index($(this));
+        part_14_tabs.data("index",index);
+        makeAnimate14();
+    })
+    var positions_14 = ["460","72px","-320px","-710px","-1100px","-1490px"];
+    function makeAnimate14(){
+        var index = part_14_tabs.data("index");
+        var tags = $(".part_14_tabs .tags>p");
+        tags.removeClass('part_14_current_p').eq(index).addClass("part_14_current_p");
+        $(".part_14_tabs .img_descriptions>p").hide().eq(index).show();
+        $(".part_14_img").children('div').addClass("img_cover").eq(index).removeClass("img_cover");
+        var videos = $(".part_14_img>video");
+        for (var i = 0; i < videos.length; i++) {
+        	videos.eq(i).hide();
+        	videos.eq(i).get(0).load();
+        };
+        $(".part_14_imgs_apples").css("zIndex","4").animate({"left":positions_14[index]},500,function(){
+        	$(".part_14_imgs_apples").css("zIndex","2");
+        	$(".part_14_imgs_apple>div").addClass("img_cover");
+        	$(".part_14_imgs_apple>div").eq(index).removeClass('img_cover');
+        	var _this = $(".part_14_img").eq(index);
+			if (_this.children('video').length) {
+				setTimeout(function(){
+					_this.children('video').get(0).play();
+					_this.children('video').show();
+				},1000);
+			};
+        });
+    }
+
+    window.onscroll = function(){
+        var scroll = $(window).scrollTop();
+        lazyLoadDivBgImg();
+        if ($(".current_nav").length) {
+        	$(".current_nav").removeClass("current_nav");
+        };
+        //console.log(scroll);
+        if (scroll < 850) {
+        	$(".float_nav").hide();
+        }else if(scroll >= 750 && scroll < 8880){
+			$(".float_nav").show();
+			$(".nav ul li").eq(0).addClass("current_nav");
+        }else if (scroll >= 8880 && scroll < 14640) {
+        	$(".float_nav").show();
+        	$(".nav ul li").eq(1).addClass("current_nav");
+        }else if(scroll >= 14640 && scroll < 19440){
+        	$(".float_nav").show();
+			$(".nav ul li").eq(2).addClass("current_nav");
+        }else if (scroll >= 19440 && (scroll < 25740)) {
+        	$(".float_nav").show();
+        	$(".nav ul li").eq(3).addClass("current_nav");
+        }else{
+        	$(".float_nav").show();
+        	$(".nav ul li").eq(4).addClass("current_nav");
+        }
+    };
+
+    $(".nav>ul>li").click(function(){
+    	var index = $(".nav>ul>li").index($(this));
+    	$(".current_nav").removeClass("current_nav");
+    	var scrollPosition = ["850px","8880","14640px","19440px","25740px"]
+    	$("body,html").animate({scrollTop:scrollPosition[index]},1000);
+    });
+
+
+    var video_src_0 = '<img class="dialog_close" src="http://www.miui.com/static/miui/newindex/images/dialog_close.png"><embed src="http://player.youku.com/player.php/sid/XMTU2NDM3NjM1Ng==/v.swf" allowFullScreen="true" quality="high" width="720" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>';
+    var video_src_15 = '<img class="dialog_close" src="http://www.miui.com/static/miui/newindex/images/dialog_close.png"><embed src="http://player.youku.com/player.php/sid/XMTU2NDM3Nzg5Ng==/v.swf" allowFullScreen="true" quality="high" width="720" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>';
+    $(".part_0>p").on("click", function() {
+        showDialog(video_src_0);
+    });
+    $(".part_15>p").on("click", function() {
+        showDialog(video_src_15);
+    });
+    function showDialog(video_src) {
+        $(".z_index_dialog").show();
+        var content_width = $(".z_index_dialog").width() / 2 - 360;
+        var content_height = $(".z_index_dialog").height() / 2 - 300;
+        $(".dialog_content").css("width", "720px");
+        $(".dialog_content").css("height", "600px");
+        $(".dialog_content").css("left", content_width);
+        $(".dialog_content").css("top", content_height);
+        $(".dialog_content").html(video_src);
+        $(".dialog_content").show();
+        $(".dialog_close").bind("click", dialogClose);
+    }
+
+    function dialogClose() {
+        $(".z_index_dialog").hide();
+        $(".dialog_content").hide();
+        $(".dialog_content").html("");
+        $(".dialog_close").unbind("click", dialogClose);
+    }
+
+
+
+
+    function lazyLoadDivBgImg(){
+        var windowHeight = $(window).height();
+        var divImgs = $(".imgLazyLoad").not(".img_loaded");
+        var scrollTop = $(window).scrollTop();
+        $.map(divImgs, function(item, index) {
+            var divImg = divImgs.eq(index);
+            var offset = divImg.offset();
+            if (offset.top < windowHeight + scrollTop + 500) {
+                divImg.addClass('img_loaded');
+                divImg.css("backgroundImage",divImg.data("url"));
+            };
+            return "";
+        })
+    }
+    lazyLoadDivBgImg();
+})
